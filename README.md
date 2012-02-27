@@ -7,7 +7,7 @@ and get more intelligent instructions from the Service Layer, then check out thi
 
 ## Usage ##
 
-For availability of functions in this way you need to mix in Underscore.string functions:
+Assuming the urls as show below will respond with JSON and with the JSend Spec:
 
 ```javascript
 var MainModel = Backbone.Model.extend({});
