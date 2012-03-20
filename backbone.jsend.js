@@ -33,7 +33,7 @@
     };
     options.success = successCallback;
 
-    Backbone.sync(method, model, options);
+    return Backbone.sync(method, model, options);
 
     // TODO: Use this release concept for canceling requests. We really need to be able to use a Timestamp for when the request was generated
     //model.queuedRequests || (model.queuedRequests = []);
