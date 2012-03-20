@@ -120,13 +120,30 @@
     },
 
     /**
+     * This method is called when the response is not a JSend response.
+     *
+     * @param response
+     * @param options
+     */
+    handleResponseNotJSend: function(response, options) {
+      var syncData = this._getSyncData(options);
+      this._cleanOptions(options);
+      options.success(response, syncData.status, syncData.xhr);
+    },
+
+    /**
      *
      * @param response
      * @param xhr
      * @param options
      */
     handleResponse: function ( response, status, xhr, options ){
-      // TODO: Validate that the response is in fact a JSend JSON object
+      if (!this._isJSendResponse(response)) {
+        if (_.isFunction(this.handleResponseNotJSend))
+          this.handleResponseNotJSend(response, options);
+        return;
+      }
+
       switch(response.status ){
         case this.ResponseStatus.FAIL:
           if (_.isFunction(this.handleResponseFailStatus))
@@ -212,6 +229,16 @@
       if(options.__syncData){
         delete options.__syncData;
       }
+    },
+    /**
+     * Naive implementation to determine whether or not a given response is
+     * a JSend response. Looks for the 'status' and 'data' keys at the top
+     * level. If they're present, assumes this is a JSend response.
+     *
+     * @param response
+     */
+    _isJSendResponse: function(response) {
+      return _.difference(['status', 'data'], _.keys(response)).length == 0;
     }
   };
 
