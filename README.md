@@ -43,7 +43,7 @@ Currently in progress of first release
 * Currently in progress of first release
 
 ## Contributors list ##
-
+*  RJ Regenold <https://github.com/rjregenold>
 
 ## Licence ##
 
