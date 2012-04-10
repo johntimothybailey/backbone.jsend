@@ -38,12 +38,11 @@ var mainview = new MainView;
 ## Changelog ##
 
 
-### 0.1.0 ###
+### [0.1.0][tag010] ###
 
 * Initial (beta) Release on 04/10/2012
-* Tag[tag010]
 
-[tag010]: https://github.com/johntimothybailey/backbone.jsend/tags
+[tag010]: https://github.com/johntimothybailey/backbone.jsend/tarball/0.1.0
 
 ## Contributors list ##
 *  RJ Regenold <https://github.com/rjregenold>
