@@ -74,7 +74,7 @@
 
         case this.ResponseStatus.ERROR:
           if (_.isFunction(this.handleResponseErrorStatus))
-            this.handleResponseFailStatus(response, options);
+            this.handleResponseErrorStatus(response, options);
           break;
       }
     },
