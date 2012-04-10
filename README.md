@@ -1,5 +1,6 @@
-# Backbone.JSend #
-Why: If you are currently using Backbone in your front-end and [JSend][d] on your Service Layer, then this makes
+Backbone JSend
+==============
+**Why**: If you are currently using Backbone in your front-end and [JSend][d] on your Service Layer, then this makes
 integration into Backbone Models and Collections simple. If you are needing a common response from the Service Layer
 and get more intelligent instructions from the Service Layer, then check out this project and [JSend][d]
 
@@ -36,11 +37,13 @@ var mainview = new MainView;
 
 ## Changelog ##
 
-Currently in progress of first release
 
 ### 0.1.0 ###
 
-* Currently in progress of first release
+* Initial (beta) Release on 04/10/2012
+* Tag[tag010]
+
+[tag010]: https://github.com/johntimothybailey/backbone.jsend/tags
 
 ## Contributors list ##
 *  RJ Regenold <https://github.com/rjregenold>
