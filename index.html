@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Backbone.jsend : A JSend Mixin for Backbone.js" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Backbone.jsend</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/johntimothybailey/backbone.jsend">View on GitHub</a>
+
+          <h1 id="project_title">Backbone.jsend</h1>
+          <h2 id="project_tagline">A JSend Mixin for Backbone.js</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/johntimothybailey/backbone.jsend/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/johntimothybailey/backbone.jsend/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>If you are currently using Backbone in your front-end and <a href="http://labs.omniti.com/labs/jsend">JSend</a> on your Service Layer, then this makes
+integration into Backbone Models and Collections simple. If you are needing a common response from the Service Layer
+and get more intelligent instructions from the Service Layer, then check out this project and <a href="http://labs.omniti.com/labs/jsend">JSend</a></p>
+
+<h3>Usage</h3>
+
+<p>Assuming the urls as show below will respond with JSON and with the JSend Spec:</p>
+
+<div class="highlight">
+<pre><span class="kd">var</span> <span class="nx">MainModel</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Model</span><span class="p">.</span><span class="nx">extend</span><span class="p">({});</span>
+
+<span class="c1">// Mixin to the model instance or Model "class" the JSend Response</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">MainModel</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span><span class="nx">Backbone</span><span class="p">.</span><span class="nx">JSend</span><span class="p">.</span><span class="nx">ResponseMixin</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">MainView</span> <span class="o">=</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">View</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MainModel</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">"error"</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Error was dispatched from the model with "</span><span class="p">,</span><span class="nx">arguments</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="s2">"/service/success"</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">fetch</span><span class="p">({</span><span class="nx">success</span><span class="o">:</span><span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"using a success callback"</span><span class="p">);</span>
+    <span class="p">}});</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="s2">"/service/error"</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">fetch</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">url</span> <span class="o">=</span> <span class="s2">"/service/doesntexist"</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">fetch</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">mainview</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MainView</span><span class="p">;</span>
+</pre>
+</div>
+
+
+<h3>Changelog</h3>
+
+<h3><a href="https://github.com/johntimothybailey/backbone.jsend/tarball/0.1.0">0.1.0</a></h3>
+
+<ul>
+<li>Initial (beta) Release on 04/10/2012</li>
+</ul><h3>Contributors list</h3>
+
+<ul>
+<li> RJ Regenold <a href="https://github.com/rjregenold">https://github.com/rjregenold</a>
+</li>
+</ul><h3>Licence</h3>
+
+<p>The MIT License</p>
+
+<p>Copyright (c) 2012 John Timothy Bailey</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Backbone.jsend maintained by <a href="https://github.com/johntimothybailey">johntimothybailey</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
